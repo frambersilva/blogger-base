@@ -1,0 +1,43 @@
+<!-- PopularPosts -->  
+<b:includable id='widget:PopularPosts'>
+<b:if cond='data:widget.sectionId == &quot;featuredHome&quot;'>
+
+<div class='parent'>
+<b:loop values='data:items ?: data:posts' var='post'>
+<!-- item -->
+      <div class='card-overlay column rd-sm'>
+        <a class='card-image image' expr:href='data:post.url'>
+           <img class='popular' expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+        </a>
+        <div class='card-body'>
+          <h2 class='card-title'><data:post.title/></h2>
+        </div>
+      </div>
+        <!-- /.item -->
+  </b:loop> 
+</div>
+
+<b:elseif cond='data:widget.sectionId == &quot;footer-most&quot;'/>  
+  <b:loop values='data:items ?: data:posts' var='post'>
+      <div class='card-list'>
+        <a class='card-image image' expr:href='data:post.url'>
+           <img class='lazy lazy-change' expr:alt='data:post.title' expr:data-src='data:post.featuredImage'/>
+        </a>
+        <div class='card-body'>
+          <h2 class='card-title'><data:post.title/></h2>
+        </div>
+      </div>
+  </b:loop>     
+<b:else/>  
+<b:loop values='data:items ?: data:posts' var='post'>
+  <div expr:class='&quot;card-&quot; + data:skin.vars.popularPost'>
+    <a class='card-image image' expr:href='data:post.url'>
+       <img class='lazy lazy-change' expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+    </a>
+    <div class='card-body'>
+        <h2 class='card-title'><data:post.title/></h2>
+    </div>
+  </div>
+</b:loop>
+</b:if>    
+</b:includable>

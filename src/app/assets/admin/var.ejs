@@ -1,0 +1,94 @@
+Default
+  ============================================
+  <Variable name="favicon" description="Favicon del blog" type="string" value=""/>
+  <Variable name="ogImage" description="Imagen open graph" type="string" value=""/>
+  <Variable name="avatar" description="avatar" type="string" value="https://lh3.googleusercontent.com/a/default-user"/>
+  <Variable name="formspree" description="formspree" type="string" value=""/>
+  <Variable name="layoutEdit" description="Boton editar" type="string" value="true"/>
+  <Variable name="editPost" description="Edit post" type="string" value="false"/>
+  
+  Functions Global
+  ============================================ 
+  <Variable name="fontMain" description="Fuente principal" type="string"  value="Google Sans"/>
+  <Variable name="navFixed" description="Menu fijo" type="string"  value="true"/>
+  <Variable name="layoutBox" description="Diseño en caja" type="string"  value="true"/>
+  <Variable name="navColor" description="Navbar color" type="string"  value="false"/>
+  <Variable name="navUi" description="Navbar UI" type="string"  value="true"/>
+  <Variable name="postUi" description="Post UI" type="string"  value="false"/>
+
+  Home
+  ============================================ 
+  <Variable name="featuredHome" description="show widger popular home" type="string"  value="true"/>
+  <Variable name="mesageHome" description="Message hero" type="string"  value="false"/>
+  <Variable name="columnHomepage" description="Homepage column" type="string"  value="3"/>
+   
+  Show
+  ============================================ 
+  <Variable name="blogHome" description="show blog to home" type="string"  value="true"/>
+  <Variable name="sidebarHome" description="Home sidebar" type="string"  value="true"/>
+  <Variable name="sidebarPost" description="Sidebar Post" type="string"  value="true"/>
+  <Variable name="sidebarPage" description="Sidebar Page" type="string"  value="true"/>
+
+  Card
+  ============================================
+  <Variable name="cards" description="Tarjeta de home" type="string"  value="grid"/>
+  <Variable name="popularPost" description="Entradas populares" type="string"  value="overlay mb"/>
+  <Variable name="showTitle" description="Show title" type="string"  value="true"/>
+  <Variable name="showSnippet" description="Show Snippet" type="string"  value="true"/>
+  <Variable name="showDate" description="Show Date" type="string"  value="true"/>
+  <Variable name="showCategory" description="Show category" type="string"   value="true"/>
+  <Variable name="showAutor" description="Show autor" type="string"  value="true"/>
+  <Variable name="cardComment" description="Show comments card" type="string" value="true"/>
+  
+  Posts
+  ============================================
+  <Variable name="showBreadcrumbs" description="Show Breadcrumbs" type="string"  value="true"/>
+  <Variable name="showRelated" description="Show related" type="string"  value="true"/>
+  <Variable name="postDate" description="Show time" type="string"  value="true"/>
+  <Variable name="postAuthor" description="Show author" type="string"  value="true"/>
+  <Variable name="postComments" description="Show Comments Post" type="string"  value="true"/>
+    
+  Comments
+  ============================================
+  <Variable name="systemComents" description="system coments" type="string"  value="blogger"/>
+  <Variable name="config.shortname" description="Shortname of Disqus" type="string" default="shortname" value="shortname"/>
+  <Variable name="t.reply" description="t.reply" type="string" value="Responder"/>
+  <Variable name="t.delete" description="t.delete" type="string" value="Eliminar"/>
+
+  Aspect
+  ============================================
+  <Variable name="pagination" description="Pagination" type="string"  value="default"/> 
+
+  Custom CSS - No tocar
+  ============================================
+  <Group description="Light Mode">
+    <Variable name="bg.white" description="Color white" type="color" default="#fff" value="#ffffff"/>
+    <Variable name="bg.light" description="Color light" type="color" default="#f1f4f8" value="#f1f4f8"/>
+    <Variable name="bg.black" description="Color black" type="color" default="#282c34" value="#282c34"/>
+    <Variable name="bg.dark" description="Color dark" type="color" default="#20262f" value="#20262f"/>
+    <Variable name="bg.keycolor" description="keycolor" type="color" default="#2196f3" value="#6366f1"/>
+    <Variable name="footer.copy" description="Sub footer" type="color" default="#2196f3" value="#000000"/>
+    <Variable name="bg.body" description="Background body" type="color" default="#fff" value="#ffffff"/>
+    <Variable name="bg.footer" description="background footer" type="color" default="#1a1a1e" value="#1a1a1e"/>
+    <Variable name="color.header" description="Color header" type="color" default="#fff" value="#ffffff"/>
+    <Variable name="primary" description="Color primary" type="color" default="#2196f3" value="#2196f3"/>
+    <Variable name="secundary" description="Color secundary" type="color" default="#2196f3" value="#2196f3"/>
+  </Group>
+
+  <Group description="Dark mode">
+    <Variable name="dk.white" description="Dark white" type="color" default="#282c34" value="#282c34"/>
+    <Variable name="dk.light" description="Dark light" type="color" default="#20262f" value="#20262f"/>
+    <Variable name="dk.black" description="Dark black" type="color" default="#fff" value="#ffffff"/>
+    <Variable name="dk.dark" description="Dark dark" type="color" default="#f1f4f8" value="#f1f4f8"/>
+    <Variable name="dk.body" description="Dk body" type="color" default="#282c34" value="#282c34"/>
+  </Group>
+    
+  <Group description="Size">
+    <Variable name="width.container" description="Content width" type="length" default="1200px" min="900px" max="2000px" value="1200px"/>
+    <Variable name="sidebar" description="Content sidebar" type="length" default="340px" min="220px" max="420px" value="340px"/>
+    <Variable name="fs.logo" description="Logo text" type="length" max="32px" min="22px" default="24px" value="24px"/>
+  </Group>
+
+  <Group description="Fonts">
+    <Variable name="font.text" description="Text Font" type="font" default="14px var(--font-roboto)" value="14px var(--fonts)"/>
+  </Group>

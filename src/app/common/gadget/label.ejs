@@ -1,0 +1,13 @@
+<b:includable id='widget:Label'>
+<div expr:class='&quot;labels labels-&quot; + data:display + &quot; mb-sm&quot;'>
+  <b:loop values='data:labels' var='label'>
+    <a class='labels-link btn dk-light color-dk-black' expr:href='data:label.url'>
+      <b:class cond='data:label.url == data:view.url' name='is-here'/>
+        <data:label.name/>
+        <b:if cond='data:this.showFreqNumbers'>
+          <span class='labels-number'><data:label.count/></span>
+        </b:if>
+    </a>
+  </b:loop>
+</div>
+</b:includable>

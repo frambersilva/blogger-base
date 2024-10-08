@@ -1,0 +1,14 @@
+<b:includable id='m:head'>
+<b:include data='{ ogImage: data:skin.vars.ogImage, favicon: data:skin.vars.favicon }' name='@meta'/>
+  <b:include name='@adsense'/>
+  <b:include name='@analytics'/>  
+  
+  <link href='https://blogger.googleusercontent.com' rel='preconnect'/>
+  
+<b:with value='[data:skin.vars.fontMain]' var='nameFonts'>
+  <b:with value='&quot;https://fonts.googleapis.com/css2?&quot; params {  family: data:nameFonts, display: &quot;swap&quot; }' var='fonts'>
+    <link as='style' expr:href='data:fonts' rel='preload'/>
+    <link expr:href='data:fonts' rel='stylesheet'/>
+  </b:with>
+  </b:with>
+</b:includable>

@@ -1,0 +1,19 @@
+<!-- Blog -->  
+<b:includable id='widget:Blog'>
+<b:with value='data:widgets.Blog1.allBylineItems' var='show'>
+  <b:if cond='data:view.isSingleItem'>        
+    <b:with value='data:posts.first' var='post'>
+    <b:include name='post:view'/>
+    </b:with>
+  <b:else/>
+  <b:if cond='data:posts.empty or data:view.isError'>
+  <!-- Si no hay entradas o es 404 muestra los siguiente msj -->  
+  <b:include name='noContentPlaceholder'/>
+  <b:else/>
+  <!-- Caso contrario muestrame los articulo y la pagination -->
+  <b:include name='post:card'/>
+  <b:include expr:name='&quot;pagination:&quot; + data:skin.vars.pagination'/> <!-- Pagination -->
+  </b:if>
+  </b:if>
+</b:with>
+</b:includable>

@@ -1,0 +1,13 @@
+<!-- FeaturedPost -->  
+<b:includable id='widget:FeaturedPost'>
+<b:loop values='data:items ?: data:posts' var='post'>
+<div expr:class='&quot;card-&quot; + data:skin.vars.cards'>
+    <a class='card-image image' expr:href='data:post.url'>
+       <img class='img' expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+    </a>
+  <div class='card-body'>
+      <h2 class='card-title'><data:post.title/></h2>
+  </div>
+</div>
+</b:loop>
+</b:includable>

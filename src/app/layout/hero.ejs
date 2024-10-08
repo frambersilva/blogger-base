@@ -1,0 +1,73 @@
+<b:if cond='data:view.isHomepage'>
+  <!-- HERO -->
+  <section class='dk:bg-white wave-container'>
+    <div class='container hero gap-lg flex flex-row-lg flex-column align-items-center container py-2'>
+        <div class='left txt-center-sm box--page order-1 p-md'>
+          <b:section id='author-branding'>
+            <b:widget id='Text3' locked='false' title='Hola soy Framber Silva' type='Text' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Desarrollador web freelancer, con 1 año de experiencia en la creacion de sitios web, plantillas para blogger, seo y monetizacion</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main' var='this'>
+<b:include name='widget-title'/>
+<b:include name='content'/>
+</b:includable>
+              <b:includable id='content'>
+<div class='widget-content'>
+<b:include expr:name='&quot;widget:&quot; + data:widget.type'/>
+</div>
+</b:includable>
+            </b:widget>
+          </b:section>
+            <b:section class='flex-sm justify-center-sm' id='branding'>
+              <b:widget id='LinkList5' locked='false' title='' type='LinkList' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='shownum'>3</b:widget-setting>
+                  <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                  <b:widget-setting name='text-1'>linkedin</b:widget-setting>
+                  <b:widget-setting name='link-1'>https://linkedin.com/in/frambersilva</b:widget-setting>
+                  <b:widget-setting name='text-0'>github</b:widget-setting>
+                  <b:widget-setting name='link-2'>https://x.com/framber_silva</b:widget-setting>
+                  <b:widget-setting name='link-0'>https://github.com/frambersilva</b:widget-setting>
+                  <b:widget-setting name='text-2'>x</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main' var='this'>
+<b:include name='widget-title'/>
+<b:include name='content'/>
+</b:includable>
+                <b:includable id='content'>
+<div class='widget-content'>
+<b:include expr:name='&quot;widget:&quot; + data:widget.type'/>
+</div>
+</b:includable>
+              </b:widget>
+            </b:section>
+        </div>
+      
+        <div class='right image order-0'>
+          <b:section id='PortafolioAuthor'>
+            <b:widget id='Image5' locked='true' title='' type='Image' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiOt5m4nv25YbedINUNwUCPnoKrH12R215wuhprN0b6hdNYhtaX-q4tv56CNxeqh8_wM6qjE4i8XSZLisU0hbwLWmmh-BFRluAn0-5KTF4EdEX72IfxIc1ZKR0C47HCyfc9OghArDfa2FAceOPaXzzzOSy34FPszF_sjz2RMei2V-tiUfk7Yv4zUnvwgjI=s220</b:widget-setting>
+                <b:widget-setting name='displayHeight'>220</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>1199</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>216</b:widget-setting>
+                <b:widget-setting name='link'/>
+                <b:widget-setting name='caption'/>
+              </b:widget-settings>
+              <b:includable id='main' var='this'>
+<b:include name='widget-title'/>
+<b:include name='content'/>
+</b:includable>
+              <b:includable id='content'>
+<div class='widget-content'>
+<b:include expr:name='&quot;widget:&quot; + data:widget.type'/>
+</div>
+</b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+    </div>
+  </section>
+  </b:if>

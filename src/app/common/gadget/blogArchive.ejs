@@ -1,0 +1,45 @@
+<b:includable id='widget:BlogArchive'>
+<b:switch var='data:style'>
+  <b:case value='HIERARCHY'/>
+    <div class='hierarchy'>
+      <b:include data='data' name='interval:data'/>
+    </div>
+  <b:default/>
+    <div class='flat'>
+      <ul class='flat-list'>
+        <b:loop values='data:data' var='i'>
+          <li class='flat-item'>
+            <a class='flat-link' expr:href='data:i.url'>
+            <span class='flat-name'><data:i.name/></span>
+            <span class='flat-count'><data:i.post-count/></span>
+            </a>
+          </li>
+        </b:loop>
+      </ul>
+    </div>
+</b:switch>
+</b:includable>
+<b:includable id='interval:data' var='intervalData'>
+<ul class='hierarchy-list'>
+  <b:loop values='data:intervalData' var='interval'>
+    <li class='hierarchy-item'>
+      <a class='hierarchy-date' expr:href='data:interval.url'>
+      <span class='hierarchy-name'><data:interval.name/></span>
+      <span class='hierarchy-count'><data:interval.post-count/></span>
+      </a>
+      <b:tag class='hierarchy-content' cond='data:interval.data or data:interval.posts' name='div'>
+        <b:include cond='data:interval.data' data='interval.data' name='interval:data'/>
+        <b:if cond='data:interval.posts'>
+          <ul class='hierarchy-posts'>
+            <b:loop values='data:interval.posts' var='post'>
+              <li class='hierarchy-post'>
+                <a class='hierarchy-post-link' expr:href='data:post.url'><data:post.title/></a>
+              </li>
+            </b:loop>
+          </ul>
+        </b:if>
+      </b:tag>
+    </li>
+  </b:loop>
+</ul>
+</b:includable>

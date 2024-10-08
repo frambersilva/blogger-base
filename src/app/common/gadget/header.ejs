@@ -1,0 +1,19 @@
+<!-- => Header -->     
+<b:includable id='widget:Header'>
+<b:if cond='data:widget.sectionId != &quot;header&quot;'>
+  <data:messages.theresNothingHere/>
+<b:else/>
+
+<b:if cond='data:image'>
+  <a class='header-logo' expr:href='data:blog.homepageUrl'>
+    <img expr:alt='data:title' expr:src='data:image' height='84' width='84'/>
+  </a>
+</b:if>
+  
+<b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
+  <div class='header-title'>
+    <a class='fs-logo' expr:href='data:blog.homepageUrl'><data:title/></a>
+  </div>
+</b:if>
+</b:if>
+</b:includable>

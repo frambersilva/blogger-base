@@ -1,0 +1,25 @@
+<b:includable id='widget:Profile'>
+<div class='profile'>
+  <b:class cond='data:this.team' name='profile-team'/>
+  <b:if cond='data:team'>
+    <b:loop values='data:authors' var='author'>
+      <a class='profile-image' expr:href='data:author.userUrl' expr:title='data:author.display-name' rel='nofollow'>
+        <b:include data='{ src: (data:author.authorPhoto.image ?: data:skin.vars.avatar), resize: 60, ratio: &quot;1:1&quot; }' name='@image'/>
+    </a>
+    </b:loop>
+  <b:else/>
+  <a class='profile-image' expr:href='data:this.userUrl' expr:title='data:this.displayname' rel='nofollow'>
+    <b:include data='{ src: (data:this.authorPhoto.image ?: data:skin.vars.avatar), resize: 60, ratio: &quot;1:1&quot; }' name='@image'/>
+  </a>
+  <div class='profile-body'>
+    <a class='profile-name' expr:href='data:this.userUrl' rel='nofollow'><data:this.displayname/></a>
+    <b:if cond='data:this.aboutme != &quot;&quot;'>
+      <p class='profile-snippet'><data:this.aboutme/></p>
+    </b:if>
+    <b:if cond='data:this.showlocation and data:this.location != &quot;&quot;'>
+      <div class='profile-locale'><data:this.location/></div>
+    </b:if>
+  </div>
+  </b:if>
+</div>
+</b:includable>

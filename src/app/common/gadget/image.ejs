@@ -1,0 +1,26 @@
+<!-- Image -->
+<b:includable id='widget:Image'>
+<b:if cond='data:widget.sectionId == &quot;category-items&quot;'>
+<div class='dk:bg-white p-md rd-sm'>      
+<div class='media flex align-items-center flex-column'>
+  <a class='category-image image' expr:href='data:link'>
+    <img class='mb lazy lazy-change' expr:alt='data:title' expr:data-src='data:sourceUrl' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:width='data:width'/>
+  </a>
+  <b:tag class='media-link mb fs-lg fw-bold' cond='data:link' expr:href='data:link' name='a'><data:title/></b:tag>
+    <p class='media-caption mb'><data:caption/></p>
+  
+</div>
+</div>
+<b:else/> 
+<figure class='media'>
+  <b:tag class='media-link obj-cover' cond='data:link' expr:href='data:link' name='a'>
+    <b:include data='{ class: &quot;autor-hero object-cover&quot;, src: data:sourceUrl, resize: (data:shrinkToFit ? 500 : 1280) }' name='@image'/>
+    <b:if cond='data:caption'>
+    <figcaption class='media-caption cover__body'>
+      <data:caption/>
+    </figcaption>
+    </b:if>
+  </b:tag>
+</figure>
+</b:if>
+</b:includable>

@@ -1,0 +1,30 @@
+<b:includable id='post.related'>
+<div class='post:related cv-related my-2'>
+<div class='headline my-1 dk:bg-light'>
+<h3 class='fs-4 inline-block p-md bg-keycolor color-white'><data:messages.youMayLikeThesePosts/></h3>
+</div>
+<div class='col-4 gap-md cv-related-append'/>
+<script>
+/*!
+  * raven.related -  v1.0.0
+  * Copyright 2021 &#169; Karasu themes
+  * Developed by Marcelo (github.com/MarceloTLD)
+  * MIT License (github.com/Karasu-themes/raven.related/blob/master/LICENSE)
+*/
+const relatedConfig = {
+  postId: &quot;<data:post.id/>&quot;,
+  home: window.location.protocol + &#39;//&#39; + window.location.hostname,
+  results: 5, // Total de entradas
+  img: &#39;s256&#39;, // Recorte imagen
+  defaultImg: &quot;you_default_image.jpg&quot;, // Imagen por defecto
+  summary: 50, // Cantidad de texto para el resumen
+  labels: [<b:loop values='data:post.labels' var='label'>&#39;<data:label.name/>&#39;,</b:loop>],
+  msg: &quot;<data:messages.noResultsFound/>&quot;
+}
+//<![CDATA[
+var related=function(){"use strict";const e=(e,t)=>{for(var r=0;r<e.length;r++)t.call(e[r],r,e[r])},t=(e,t)=>{let r=document.createElement("script");return r.src=e+t,r},r=(e,t)=>{var r;for(r in t)t.hasOwnProperty(r)&&(e[r]=t[r]);return e},a=(e,t)=>{function r(e){let t=e,r="";for(var a=0;a<t.length;a++)"alternate"==t[a].rel&&(r=t[a].href);return r}function a(e){return e.replace(/<[^>]*>?/g,"")}const l=e.content?e.content.$t:e.summary.$t;return{id:function(e){return e.match(/post-\d{1,}/g)[0].replace("post-","")}(e.id.$t),title:e.title?e.title.$t:"No title",thumbnail:e.media$thumbnail?e.media$thumbnail.url.replace(/s\B\d{2,4}-?(w\B\d{2,4}-h\B\d{2,4})?-c/,t.img?t.img:"s200"):function(e){let r=document.createElement("div");r.innerHTML=e;let a=r.querySelector("img");return a?a.getAttribute("src"):t.defaultImg}(l),label:e.category?e.category.map(e=>e.term):"",link:r(e.link),url:r(e.link),content:l,summary:function(e){return t.summary?a(e).substr(0,t.summary):a(e).substr(0,100)}(l),published:e.published.$t,update:e.updated.$t}},l=(e,t)=>t.replace(/\{\w+\}/g,t=>{let r=t.replace(/{|}/g,"");return e[r]}),n=()=>'\n<div class="card-normal">\n<a href="{url}" class="card-image image">\n<img class="img" src="{thumbnail}" loading="lazy"/>\n</a>\n<div class="card-body">\n<header class="card__header">\n<h2 class="card-headline fs-sm"><a href="{url}">{title}</a></h2>\n{episode}\n</header>\n</div>\n</div>',s=e=>{let t=/-\s?[a-zA-ZÀ-ÿ]+\s\d{1,}/g,r=e.match(t);return r?{title:e.replace(t,"").trim(),episode:r[0].replace(/\s?-\s/g,"").toLowerCase(),number:r[0].match(/\d+/g)[0]}:{}};return class{constructor(e){this.template="",this.config=e,this.init()}setTemplate(e){this.template=e}getTemplate(){return this.template?this.template:n()}async init(){let n=document.querySelector(".cv-related"),i=this.config,c=n.querySelector(".cv-related-append"),d=document.body,u=t(i.home,`/feeds/posts/default?alt=json-in-script&callback=cvrelated&max-results=${i.results+1}&q=`+(()=>{let e="";for(let t=0;t<i.labels.length;t++)e+='label:"'+i.labels[t]+'"'+(t===i.labels.length-1?"":"|");return e})());if(n&&!c)return console.error("Error: .cv-related-append is not found"),!1;d.appendChild(u),window.cvrelated=(t=>{let n=t.feed.entry;void 0!==n?(c.innerHTML="",e(n.filter(e=>e.id.$t.split(".post-")[1]!==i.postId),(e,t)=>{const n=a(t,{img:i.img,defaultImg:i.defaultImg,summary:i.summary}),d=s(n.title);c.innerHTML+=l(r(n,d),this.getTemplate().replace("{episode}",d.episode?`<span class="card__eName">${d.episode}</span>`:""))})):c.innerHTML=`<p class="alert">${i.msg}</p>`})}}}();
+//]]>
+const cvRelated = new related(relatedConfig);
+</script>
+</div>
+</b:includable>

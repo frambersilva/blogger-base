@@ -1,0 +1,15 @@
+<b:includable id='@avatar'>
+<b:if cond='data:src'>
+    <b:with value='data:default ?: &quot;https://lh3.googleusercontent.com/a/default-user&quot;' var='default'>
+        <b:with value='resizeImage((data:src contains &quot;/img/bl&quot; ? data:default : data:src), (data:resize ?: 40), &quot;1:1&quot;)' var='avatar'>
+            <b:tag expr:alt='data:alt ?: data:messages.image' expr:src='data:avatar' name='img'>
+                <b:attr name='b:whitespace' value='remove'/>
+                <b:attr expr:value='data:avatar.width' name='width'/>
+                <b:attr expr:value='data:avatar.height' name='height'/>
+                <b:attr expr:value='data:loading' name='loading'/>
+                <b:class cond='data:class' expr:name='data:class'/>
+            </b:tag>
+        </b:with>
+    </b:with>
+</b:if>
+</b:includable>

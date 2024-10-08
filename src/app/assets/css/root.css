@@ -1,0 +1,45 @@
+:root{
+  --keycolor:$(bg.keycolor);
+  --bg-footer:$(bg.footer);
+  --sub-footer:$(footer.copy);
+  --bg-body:$(bg.body);
+  --primary:$(primary);
+  --secundary:$(secundary);
+  --link-color:$(bg.keycolor);
+  --width-container: $(width.container);
+  --sidebar: $(sidebar);
+  --fonts:$(fontMain);
+  --fs-logo:$(fs.logo);
+  --color-header:$(color.header);
+  --xs:.25rem;
+  --sm:.5rem;
+  --md:1rem;
+  --lg:2rem;
+  --xlg:2.5rem;
+  --xxl:3rem;
+  --sh-xs:0 1px 2px rgba(0,21,64,.1),0 2px 1px rgba(0,21,64,.1);
+  --sh-sm:0 2px 4px rgba(0,21,64,.1),0 4px 2px rgba(0,21,64,.1);
+  --sh-md:0 4px 8px rgba(0,21,64,.1),0 8px 4px rgba(0,21,64,.1);
+  --sh-lg:0 8px 16px rgba(0,21,64,.1),0 16px 8px rgba(0,21,64,.1);
+  --sh-ui:0 7px 28px rgba(23,43,99,.14) !important;
+  --bg-white:$(bg.white);
+  --bg-light:$(bg.light);
+  --bg-black:$(bg.black);
+  --bg-dark:$(bg.dark);
+  --dk-white:$(bg.white);
+  --dk-light:$(bg.light);
+  --dk-black:$(bg.black);
+  --dk-dark:$(bg.dark);
+ --svg-success:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='none' d='m5 11 5 5 8.5-8.5' stroke='%2310b981' stroke-width='2'/%3E%3C/svg%3E");
+  --svg-xmark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='none' d='m7.5 7.5 9 9m-9 0 9-9' stroke='%23aeaeae' stroke-width='2'/%3E%3C/svg%3E");
+color-scheme:light;
+}
+
+[data-theme=dark]{
+  --dk-white:$(dk.white);
+  --dk-light:$(dk.light);
+  --dk-black:$(dk.black);
+  --dk-dark:$(dk.dark);
+  --bg-body:$(dk.body);
+color-scheme:dark;
+}

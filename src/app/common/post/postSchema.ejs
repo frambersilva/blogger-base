@@ -1,0 +1,24 @@
+<b:includable id='post:schema'>
+<script type='application/ld+json'>{
+    &quot;@context&quot;: &quot;http://schema.org&quot;,
+      &quot;@type&quot;: &quot;BlogPosting&quot;,
+      &quot;mainEntityOfPage&quot;: {
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;@id&quot;: &quot;<data:blog.homepageUrl.canonical/>&quot;
+      },
+      &quot;headline&quot;: &quot;<data:post.title.escaped/>&quot;,
+      &quot;description&quot;: &quot;<data:post.snippets.short/>&quot;,
+      &quot;datePublished&quot;: &quot;<data:post.date.iso8601/>&quot;,
+      &quot;dateModified&quot;: &quot;<data:post.date.iso8601/>&quot;,
+      &quot;image&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+            &quot;url&quot;: &quot;<data:post.featuredImage/>&quot;,
+            &quot;width&quot;:1200,
+            &quot;height&quot;;:630
+        },
+      &quot;author&quot;: {
+        &quot;@type&quot;: &quot;Person&quot;,
+          &quot;name&quot;: &quot;<data:post.author.name.escaped/>&quot;
+        }
+  }</script>
+</b:includable>

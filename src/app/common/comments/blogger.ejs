@@ -1,0 +1,149 @@
+<b:includable id='comment:form'>
+<div class='comments-editor'>
+<b:if cond='data:post.allowNewComments'>
+            <div id='comment-form'>
+              <div class='comment-iframe'>
+                <iframe expr:src='data:post.commentFormIframeSrc params { skin: &quot;emporio&quot; }' height='66' id='comment-editor'/>
+              </div>
+            </div>
+            <b:if cond='data:this.messages.blogComment'>
+              <div class='comment-messages'>
+                <data:this.messages.blogComment/>
+              </div>
+            </b:if>
+            <textarea id='form-script'>
+              <data:post.cmtfpIframe/>
+            </textarea>
+            <button class='comment-restore-button' id='form-restore'>
+              <b:eval expr='data:texts.restore ?: data:messages.postAComment'/>
+            </button>
+            <script>
+              /*<![CDATA[*/
+                !function(){"use strict";const e=document.getElementById("comment-form"),r=document.getElementById("form-script"),t=document.getElementById("form-restore"),n=document.querySelectorAll("[data-parent-id]"),c="is-active",o="is-replying",s="has-reply-form";function i(e){if(!e)return;const r=e.value.replace(/<script.*?src='(.*?)'.*?><\/script>/,"$1");e.remove(),(e=>new Promise(((r,t)=>{const n=document.createElement("script");n.src=e,n.onload=r,n.onerror=t,document.head.appendChild(n)})))(r).then((()=>BLOG_CMT_createIframe("https://www.blogger.com/rpc_relay.html"))).catch((e=>console.error(e)))}function m(e,r){if(!e)return;const t=e.match(/<iframe[^>]*\s+src="([^"]*)"/i)[1];return{originalSrc:t,form:r?e.replace(t,r):e}}(n=>{var a,l,d;if(a=r,l=()=>{i(r)},d={rootMargin:"200px"},new IntersectionObserver(((e,r)=>{e.forEach((e=>{e.isIntersecting&&(l(),r.unobserve(e.target))}))}),{...d}).observe(a),!n)return;const u=e.innerHTML,{originalSrc:f,form:p}=m(u),v=document.createElement("div");let g;v.id="reply-form",n.forEach((r=>{r.onclick=()=>{const n=r.dataset.parentId,i=document.querySelector(`#c${n} .comments-replies`),a=document.getElementById("reply-form");if(g===r)return;a?(a.parentElement.classList.remove(s),a.remove()):(e.innerHTML="",t.classList.add(o)),g&&g.classList.remove(c);const l=`${f}&parentID=${n}`,{form:d}=m(u,l);r.classList.add(c),g=r,v.innerHTML=d,i.classList.add(s),i.insertAdjacentElement("afterbegin",v)}})),t&&(t.onclick=()=>{if(g){const r=document.getElementById("reply-form");t.classList.remove(o),e.innerHTML=p,g.classList.remove(c),g=null,r.parentElement.classList.remove(s),r.remove()}})})(n)}();
+              /*]]>*/
+            </script>
+            <b:else/>
+            <div class='comment-alert'>
+              <data:post.noNewCommentsText/>
+            </div>
+          </b:if>
+        </div>
+      </b:includable>
+      <b:includable id='comment:header'>
+        <div class='comment-header'>
+          <div class='comment-avatar'>
+            <b:include data='{ src: data:comment.authorAvatarSrc, default: data:avatar }' name='@avatar'/>
+          </div>
+          <div class='comment-meta'>
+            <b:tag class='comment-author' expr:name='data:comment.authorUrl ? &quot;a&quot; : &quot;span&quot;'>
+              <b:attr expr:value='data:comment.authorUrl' name='href'/>
+              <data:comment.author/>
+              <b:if cond='data:comment.extraIconClass'>
+                <span class='comment-badge'>
+                  <svg class='i i-circle-check' viewBox='0 0 24 24'>
+                    <circle cx='12' cy='12' r='10'/>
+                    <path d='m8.5 12.5 2 2 5-5'/>
+                  </svg>
+                </span>
+              </b:if>
+            </b:tag>
+            <span class='comment-time'>
+              <data:comment.timestamp/>
+            </span>
+          </div>
+        </div>
+      </b:includable>
+      <b:includable id='comment:body'>
+        <div class='comment-content'>
+          <b:class cond='data:comment.isDeleted' name='comment-deleted'/>
+          <data:comment.body/>
+        </div>
+      </b:includable>
+      <b:includable id='comment:footer'>
+        <div class='comment-footer'>
+          <b:if cond='data:hasDepth'>
+            <button class='comment-reply-button' expr:data-parent-id='data:comment.id'>
+              <b:eval expr='data:texts.reply ?: data:messages.postAComment'/>
+            </button>
+          </b:if>
+          <span expr:class='data:comment.adminClass'>
+            <a class='comment-delete-button' expr:href='data:comment.deleteUrl'>
+              <b:eval expr='data:texts.delete ?: data:messages.deleteComment'/>
+            </a>
+          </span>
+        </div>
+      </b:includable>
+      <b:includable id='comment:pagination'>
+        <div class='comments-paging'>
+          <b:if cond='data:post.hasOlderLinks'>
+            <a expr:href='data:post.oldestLinkUrl'><data:messages.oldest/></a>
+            <a expr:href='data:post.olderLinkUrl'><data:messages.older/></a>
+          </b:if>
+          <data:post.commentRangeText/>
+          <b:if cond='data:post.hasNewerLinks'>
+            <a expr:href='data:post.newerLinkUrl'><data:messages.newer/></a>
+            <a expr:href='data:post.newestLinkUrl'><data:messages.newest/></a>
+          </b:if>
+        </div>
+      </b:includable>
+      <b:includable id='comment:item' var='comment'>
+        <b:with value='(data:currentDepth ?: -1) + 1' var='currentDepth'>
+          <b:with value='(data:depth gt 0) and (data:currentDepth lt data:depth)' var='hasDepth'>
+            <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
+              <div class='comment-block'>
+                <b:include name='comment:header'/>
+                <b:include name='comment:body'/>
+                <b:include cond='data:post.allowNewComments' name='comment:footer'/>
+                <b:if cond='data:hasDepth'>
+                  <b:with value='data:post.comments where (c =&gt; c.inReplyTo == data:comment.id)' var='replies'>
+                    <div class='comments-replies'>
+                      <b:if cond='data:replies.any'>
+                        <b:class name='has-replies'/>
+                        <b:loop expr:reverse='data:reverse' values='data:replies' var='reply'>
+                          <b:include data='reply' name='comment:item'/>
+                        </b:loop>
+                      </b:if>
+                    </div>
+                  </b:with>
+                </b:if>
+              </div>
+            </div>
+          </b:with>
+        </b:with>
+      </b:includable>
+  
+<b:includable id='comment:build'>
+<b:with value='{ min: (data:depth ?: 1), max: 5 }' var='depths'>
+<b:with value='(data:depths.min &gt;= data:depths.max) ? data:depths.max : data:depths.min' var='depth'>
+<b:with value='data:post.comments where (c =&gt; (data:depth == 0 ? c.id : !c.inReplyTo))' var='comments'>
+<b:if cond='data:comments.any'>
+<div class='comments-content'>
+<b:loop expr:reverse='data:reverse' values='data:comments' var='comment'>
+<b:include data='comment' name='comment:item'/>
+</b:loop>
+</div>
+</b:if>
+</b:with>
+</b:with>
+</b:with>
+</b:includable>
+  
+<b:includable id='comment:main'>
+<b:if cond='not data:view.isPreview and data:post.allowComments'>
+<div class='comments-title'>
+<b:message name='messages.numberOfComments'>
+<b:param expr:value='data:post.numberOfComments' name='numComments'/>
+</b:message>
+</div>
+<div class='comments' id='comments'>
+<b:loop reverse='data:order' values='[&quot;build&quot;,&quot;form&quot;]' var='include'>
+<b:include expr:name='&quot;comment:&quot; + data:include'/>
+</b:loop>
+<b:include cond='data:post.commentPagingRequired' name='comment:pagination'/>
+</div>
+</b:if>
+</b:includable>
+
+<b:includable id='comment:blogger'>
+<b:include data='{ depth: 2, texts: { delete: data:skin.vars.t_delete, reply: data:skin.vars.t_reply } }' name='comment:main'/>
+</b:includable>

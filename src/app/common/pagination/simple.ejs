@@ -1,0 +1,14 @@
+<b:includable id='pagination:default'>
+  <b:tag class='blog-pager my-1' cond='data:newerPageUrl or data:olderPageUrl' id='blog-pager' name='div'>
+    <b:if cond='data:newerPageUrl'>
+      <a class='pager-button btn bg-header color-white' expr:aria-label='data:messages.newerPosts' expr:href='data:newerPageUrl'>
+        <i data-i='arrow-left-long'/>
+      </a>
+    </b:if>
+    <b:if cond='data:olderPageUrl'>
+      <a class='pager-button btn bg-header color-white' expr:aria-label='data:messages.olderPosts' expr:href='data:olderPageUrl'>
+        <i data-i='arrow-right-long'/>
+      </a>
+    </b:if>
+  </b:tag>
+</b:includable>

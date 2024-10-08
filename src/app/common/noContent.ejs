@@ -1,0 +1,19 @@
+<b:includable id='noContentPlaceholder'>
+<b:if cond='data:posts.empty'>
+<div class='message'>
+<b:if cond='data:view.isError'>
+<b:class name='error'/>
+<div class='p-md'>
+  <div class='dk-white color-dk-black sh-lg rd-sm my-2  container-page'>
+    <div class='txt-center 404 p-lg'>
+      <h2 class='fs-lg fw-bold my-1'>404 :)</h2>
+      <p><data:this.navMessage/></p>
+    </div>
+  </div>
+</div>
+<b:else/>
+<b:eval expr='data:view.search.query ? data:messages.noResultsFound : data:this.navMessage'/>
+</b:if>
+</div>
+</b:if>
+</b:includable>

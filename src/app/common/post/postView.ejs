@@ -1,0 +1,61 @@
+<b:includable id='post:view'>
+  <b:if cond='data:view.isMultipleItems'>
+    <!-- {{ Multiple items }} -->
+    <b:include naem='post:card'/>
+        
+  <b:elseif cond='data:view.isPost'/>
+    <!-- {{ Posts }} -->
+    <article class='articles'>
+      <b:class cond='data:skin.vars.postUi' name='dk:bg-white p-lg sh-ui rd-sm'/>
+      <header class='mb'>
+         <b:if cond='data:skin.vars.showBreadcrumbs'>
+            <b:include name='post:breadcrumbs'/>
+         </b:if>
+         <h1 class='fs-2 mb'><data:post.title/></h1>
+  
+        <div class='authot-post flex align-items-center gap-md mb'>
+          <b:if cond='data:skin.vars.postAuthor'>
+            <div class='autors flex gap-md align-items-center'>
+              <div class='image rd-circle'>
+                  <img class='avatar autor-min obj-cover' expr:src='data:post.author.authorPhoto.image' loading='lazy'/>
+              </div>
+              <p><data:post.author.name/></p>
+
+ <svg class='i i-sm color-keycolor' viewBox='0 0 24 24'><path d='M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z'/></svg>
+            </div>
+          </b:if>
+          
+                  <b:if cond='data:skin.vars.postDate'>
+            <time class='flex align-items-center gap-sm'>
+              <i data-i='clock'/><data:post.date/>
+            </time>
+          </b:if>
+          
+        </div>
+
+      </header>
+      <div class='articleBody typography' id='postBody'>
+        <data:post.body/>
+      </div>
+      <footer>
+          <b:include name='post.shareIt'/>
+          
+        <b:include name='autorBox'/>
+          <b:if cond='data:skin.vars.postComments'>
+          <b:include expr:name='&quot;comment:&quot; + data:skin.vars.systemComents'/>
+        </b:if>
+          <b:if cond='data:skin.vars.showRelated'>
+            <b:include name='post.related'/>
+          </b:if>
+          <b:include name='post:schema'/>
+      </footer>      
+    </article>
+  
+    <b:elseif cond='data:view.isPage'/>
+    <article class='articles'>
+      <div class='articleBody typography'>
+          <data:post.body/>    
+      </div>
+    </article>
+  </b:if>
+</b:includable>

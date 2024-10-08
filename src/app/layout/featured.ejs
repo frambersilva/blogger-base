@@ -1,0 +1,19 @@
+<b:if cond='data:skin.vars.featuredHome'>
+<b:if cond='data:view.isHomepage'>
+<!-- PopularPosts -->
+<div class='bg-body'>
+  <b:if cond='data:skin.vars.postUi'>
+      <b:attr name='class' value='dk:bg-light'/>
+  </b:if>
+  <div class='container py-2'>
+  <b:section id='featuredHome'>
+    <b:widget id='PopularPosts2' locked='false' title='' type='PopularPosts' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='numItemsToShow'>4</b:widget-setting>
+      </b:widget-settings>
+    </b:widget>
+  </b:section>
+  </div>
+</div>
+</b:if>
+</b:if>

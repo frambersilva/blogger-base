@@ -1,0 +1,15 @@
+{
+  "name": "BloggerBase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ejs -w src/app.ejs -o build/app.xml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10"
+  }
+}

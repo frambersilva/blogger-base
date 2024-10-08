@@ -1,0 +1,10 @@
+<b:includable id='widget-title'>
+<b:include data='{[&quot;id&quot;],[&quot;data-version&quot;]}' name='@attr'/>
+  <b:if cond='data:widget.sectionId != &quot;header&quot; and (data:defaultTitle or data:title.length != 0)'>
+  <div class='widget-title'>
+    <span class='widget-name'>
+      <b:eval expr='data:defaultTitle ?: data:title'/>
+    </span>
+  </div>
+  </b:if>
+</b:includable>

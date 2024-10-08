@@ -1,0 +1,38 @@
+<b:includable id='@meta'>
+<title><data:view.title.escaped/></title>
+  <meta expr:content='data:view.title' property='twitter:title'/>
+  <meta expr:content='data:view.title.escaped' property='og:title'/>
+  <meta expr:content='data:view.description.escaped' name='description'/>
+  <meta expr:content='data:view.description.escaped' name='twitter:description'/>
+  <meta expr:content='data:view.description.escaped' property='og:description'/>
+  <meta content='width=device-width,initial-scale=1' name='viewport'/>
+  <meta expr:charset='data:blog.encoding'/>
+  <!-- Favicon -->
+  <b:if cond='data:favicon'>
+  <b:loop values='(data:favSizes ?: [32,96,180,192])' var='size'>
+    <link expr:href='resizeImage(data:favicon, data:size, &quot;1:1&quot;)' expr:sizes='data:size + &quot;x&quot; + data:size' rel='icon' type='image/png'/>
+  </b:loop>
+  <b:else/>
+  <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+  </b:if>
+  <!-- Cannonical -->
+  <b:with value='data:https ? data:view.url.canonical.https : data:view.url.canonical' var='canonical'>
+  <link expr:href='data:canonical' rel='canonical'/>
+  <meta expr:content='data:canonical' property='og:url'/>
+  <meta expr:content='data:canonical' name='twitter:url'/>
+  </b:with>
+  <!-- Robots -->
+  <meta expr:content='data:view.isHomepage or data:view.isSingleItem ? (data:robots ?: &quot;quot;index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1&quot;) : &quot;noindex,follow&quot;' name='robots'/>
+  <meta expr:content='data:view.isSingleItem ? &quot;article&quot; : &quot;website&quot;' property='og:type'/>          
+  <b:if cond='data:view.featuredImage or data:ogImage or data:widgets.Blog.first.posts.first.featuredImage'>
+    <b:with value='resizeImage((data:view.featuredImage ?: (data:ogImage != &quot;&quot; ? data:ogImage : data:widgets.Blog.first.posts.first.featuredImage)), 1200, &quot;1200:630&quot;)' var='image'>
+      <meta expr:content='data:image' property='og:image'/>
+      <meta expr:content='data:image' name='twitter:image'/>
+      <b:if cond='data:image.isResizable'>
+        <meta expr:content='data:image.width' property='og:image:width'/>
+        <meta expr:content='data:image.height' property='og:image:height'/>
+      </b:if>
+    </b:with>
+  </b:if>
+  <meta expr:content='data:cardType ?: &quot;summary_large_image&quot;' name='twitter:card'/>  
+</b:includable>

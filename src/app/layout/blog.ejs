@@ -1,0 +1,26 @@
+<section class='main'>
+<b:if cond='data:show.home or data:show.post or data:show.page '>
+<b:class name='content flex flex-column'/>
+</b:if>
+  <b:if cond='data:view.isHomepage'>
+    <div class='headline-main dk:bg-light mb flex align-items-center justify-between'>
+      <div class='left bg-keycolor p-md color-white'>
+        <h2 class='fs-6'><data:messages.recentPosts/></h2>
+      </div>
+      <div class='right bg-keycolor p-md color-white'>
+        <a class='fs-6' expr:href='&quot;/search?max-results=&quot; + data:posts.size'>
+          <data:messages.showAll/>
+        </a>
+      </div>
+    </div>
+  </b:if>
+  
+  <!-- Blog -->
+  <b:section class='Blog' id='Blog4'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='showAuthor'>true</b:widget-setting>
+      </b:widget-settings>
+    </b:widget>
+  </b:section>      
+</section>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:js='true' b:layoutsVersion='3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale'>
+<b:include name='m:root'/>
+<head>
+
+<!-- Meta -->
+<b:include name='m:head'/>
+
+<b:if cond='!data:view.isLayoutMode'>
+<b:skin><![CDATA[
+/*
+<%- include('app/assets/admin/var.ejs'); %>
+*/
+
+/* Styles */
+<%- include('app/assets/css/root.css'); %>
+<%- include('app/assets/main.css'); %>
+
+]]></b:skin>
+
+<b:if cond='data:view.isSingleItem'>
+<style>
+<%- include('app/assets/css/typography.css'); %>
+</style>
+</b:if>
+
+<b:else/>
+<b:template-skin><![CDATA[
+<%- include('app/assets/admin/admin.css'); %>
+]]></b:template-skin>
+</b:if>
+
+<b:defaultmarkups>
+<%- include('app/common/format.ejs'); %>
+
+<b:defaultmarkup type='Common'>
+<%- include('app/common/function/@ads.ejs'); %>
+<%- include('app/common/function/@adsense.ejs'); %>
+<%- include('app/common/function/@analytics.ejs'); %>
+<%- include('app/common/function/@attr.ejs'); %>
+<%- include('app/common/function/@avatar.ejs'); %>
+<%- include('app/common/function/@image.ejs'); %>
+<%- include('app/common/function/@views.ejs'); %>
+<%- include('app/common/function/@meta.ejs'); %>
+<%- include('app/common/function/@menu.ejs'); %>
+<%- include('app/common/function/head.ejs'); %>
+<%- include('app/common/function/clean-xml.ejs'); %>
+
+<!-- Card -->
+<%- include('app/common/card.ejs'); %>
+<%- include('app/common/pagination/simple.ejs'); %>
+
+<!-- Post -->
+<%- include('app/common/post/postView.ejs'); %>
+<%- include('app/common/post/postAds.ejs'); %>
+<%- include('app/common/post/postSchema.ejs'); %>
+<%- include('app/common/post/postShare.ejs'); %>
+<%- include('app/common/post/postRelated.ejs'); %>
+<%- include('app/common/post/postBreadcrumbs.ejs'); %>
+<%- include('app/common/post/postAuthor.ejs'); %>
+
+<!-- Comments -->
+<%- include('app/common/comments/blogger.ejs'); %>
+<%- include('app/common/comments/disqus.ejs'); %>
+<%- include('app/common/comments/facebook.ejs'); %>
+
+<!-- Gadgets -->
+<%- include('app/common/gadget/adsense.ejs'); %>
+<%- include('app/common/gadget/blog.ejs'); %>
+<%- include('app/common/gadget/blogArchive.ejs'); %>
+<%- include('app/common/gadget/blogSearch.ejs'); %>
+<%- include('app/common/gadget/contactForm.ejs'); %>
+<%- include('app/common/gadget/featuredPost.ejs'); %>
+<%- include('app/common/gadget/header.ejs'); %>
+<%- include('app/common/gadget/html.ejs'); %>
+<%- include('app/common/gadget/image.ejs'); %>  
+<%- include('app/common/gadget/label.ejs'); %>
+<%- include('app/common/gadget/linkList.ejs'); %>
+<%- include('app/common/gadget/pageList.ejs'); %>
+<%- include('app/common/gadget/popularPost.ejs'); %>
+<%- include('app/common/gadget/profile.ejs'); %>
+<%- include('app/common/gadget/text.ejs'); %>
+<%- include('app/common/gadget/textList.ejs'); %>
+
+<%- include('app/common/widget-title.ejs'); %>
+<%- include('app/common/noContent.ejs'); %>
+</b:defaultmarkup>
+
+<b:defaultmarkup type='AdSense,Header,Blog'>
+<b:includable id='main' var='this'>
+  <b:include data='{[&quot;id&quot;],[&quot;data-version&quot;]}' name='@attr'/>
+    <b:include expr:name='&quot;widget:&quot; + data:widget.type'/>
+  </b:includable>
+<b:includable id='content'/>
+</b:defaultmarkup>
+
+<b:defaultmarkup type='All'>
+  <b:includable id='main' var='this'>
+    <b:include name='widget-title'/>
+  <b:include name='content'/>
+  </b:includable>
+  <b:includable id='content'>
+    <div class='widget-content'>
+      <b:include expr:name='&quot;widget:&quot; + data:widget.type'/>
+    </div>
+  </b:includable>
+</b:defaultmarkup>
+
+<b:defaultmarkup type='BloggerButton,BlogList,Feed,ReportAbuse,Stats,Translate,Wikipedia'>
+<b:includable id='main'/>
+<b:includable id='content'/>
+</b:defaultmarkup>
+</b:defaultmarkups>
+</head>
+
+<body class='layout-website dk-white sh-ui color-dk-black'>
+<b:include name='@views'/>
+
+<b:class cond='data:skin.vars.layoutBox' name='layout-box'/>  
+<b:class cond='data:skin.vars.navFixed' name='is-fixed'/>
+
+<b:tag class='layout-edit' cond='data:view.isLayoutMode and data:skin.vars.layoutEdit' name='div'>
+<!-- Header -->
+<%- include('app/layout/header.ejs'); %>
+
+<!-- Site Hero -->
+
+<%- include('app/layout/featured.ejs'); %>
+
+  
+<!-- Blog -->
+<b:with value='{ post: ((data:view.isPost or data:view.isLayoutMode ) and data:skin.vars.sidebarPost), page: ((data:view.isPage or data:view.isLayoutMode) and data:skin.vars.sidebarPage), home: ((data:view.isHomepage or data:view.isLayoutMode) and data:skin.vars.sidebarHome) }' var='show'>
+<b:if cond='data:skin.vars.blogHome'>
+<main class='bg-body dk:color-dark' itemscope='itemscope' itemtype='http://schema.org/Blog'> 
+<b:if cond='data:skin.vars.postUi'>
+<b:attr name='class' value='dk:bg-light'/>
+</b:if>
+<b:tag class='container py-2' cond='data:skin.vars.blogHome' name='div'>
+<b:if cond='data:show.home or data:show.post or data:show.page'>
+<b:class name='layout'/>
+</b:if>
+<%- include('app/layout/blog.ejs'); %>
+<%- include('app/layout/sidebar.ejs'); %>
+</b:tag>
+</main>
+</b:if>
+</b:with>
+       
+   <!-- Widget Adsterra -->
+   <b:section id='adsBefore'/> 
+   <%- include('app/layout/footer'); %>
+</b:tag>
+
+<!-- ToTop -->
+<button arial-button='button' class='toTop' id='toTop'>
+  <svg viewBox='0 0 24 24'>
+    <path d='m4 16 8-8 8 8'/>
+  </svg>
+</button>
+  
+<!-- VanillaJS (All Javacript Pure sin dependecy) --> 
+<script defer='defer' src='https://cdn.jsdelivr.net/gh/FramberSilva/data@main/core.min.js'/>
+
+<!-- Meteoricons.com by zkreations.com -->  
+<script defer='defer' src='https://cdn.jsdelivr.net/gh/FramberSilva/data@main/meteor.min.js'/> 
+  
+<b:if cond='data:view.isPost'>
+<script>/*<![CDATA[*/
+async function initHighlight() {
+  const loadScript = () => new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.src = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js'
+    script.onload = resolve
+    script.onerror = reject
+    document.body.appendChild(script)
+  })
+
+  try {
+    await loadScript()
+    hljs.highlightAll()
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function addCopyButtons (codeBlock) {
+  if (!navigator || !navigator.clipboard) return
+
+  const clipboard = navigator.clipboard
+  const $button = document.createElement('button')
+  $button.className = 'hljs-copy'
+
+  $button.addEventListener('click', function () {
+    clipboard.writeText(codeBlock.textContent).then(function () {
+      $button.blur()
+      $button.classList.add('is-copied')
+      $button.disabled = true
+
+      setTimeout(function () {
+        $button.disabled = false
+        $button.classList.remove('is-copied')
+      }, 2000)
+    })
+  })
+
+  const pre = codeBlock.parentNode
+  pre.insertBefore($button, pre.firstChild)
+}
+
+function initCodeBlocks () {
+  const codeBlocks = document.querySelectorAll('pre > code')
+  if (codeBlocks.length === 0) return
+
+  initHighlight()
+  
+  codeBlocks.forEach(function (codeBlock) {
+    addCopyButtons(codeBlock)
+  })
+}
+
+initCodeBlocks()/*]]>*/</script>
+
+<!-- => Table of content automatic -->  
+<script defer='defer' src='https://cdn.jsdelivr.net/gh/FramberSilva/data@main/tocAuto.min.js'/>
+<script>//<![CDATA[
+document.addEventListener('DOMContentLoaded', () => new TableOfContents({ 
+  from: document.querySelector('#postBody'), 
+  to: document.querySelector('#tocAuto') }).generateToc() 
+);
+//]]></script>  
+</b:if>
+
+<script>/*<![CDATA[*/
+const toTop = (() => {
+  let button = document.getElementById("toTop");
+  window.onscroll = () => {
+    button.classList[
+        (document.documentElement.scrollTop > 200) ? "add" : "remove"
+      ]("is-visible")
+  }
+  button.onclick = () => {
+    window.scrollTo({
+      top:0, behavior:"smooth"
+    })
+  }
+})();/*]]>*/
+</script>  
+
+<b:comment>Hack delete javascript default</b:comment>
+&lt;textarea hidden id=&#39;bjs&#39;&gt;</body>&lt;/textarea&gt;
+&lt;/body&gt;
+</html>

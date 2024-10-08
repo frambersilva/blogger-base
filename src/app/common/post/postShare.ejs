@@ -1,0 +1,25 @@
+<b:includable id='post.shareIt'>
+<div class='post:shareIt nshare color-white gap-sm flex wrap'>
+    <a class='btn nshare-fb' expr:href='appendParams(&quot;https://www.facebook.com/sharer/sharer.php&quot;, {u: data:post.url})' rel='noreferrer noopener nofollow' target='_blank'>
+      <i data-i='facebook'/>
+    </a>
+    <a class='btn bg-dark' expr:href='appendParams(&quot;https://twitter.com/intent/tweet&quot;, {url: data:post.url, text: data:post.title})' rel='noreferrer noopener nofollow' target='_blank'>
+      <i data-i='x'/>
+    </a>
+    <a class='btn nshare-pt' expr:href='appendParams(&quot;https://pinterest.com/pin/create/button&quot;, {url: data:post.url, media: data:post.featuredImage})' rel='noreferrer noopener nofollow' target='_blank'>
+      <i data-i='pinterest'/>
+    </a>
+    <a class='btn nshare-rd' expr:href='params(&quot;https://reddit.com/submit&quot;,{url: data:url, title: data:post.title})' target='_blank'>
+      <i data-i='reddit'/>
+    </a>
+    <a class='btn nshare-tb' expr:href='appendParams(&quot;https://www.tumblr.com/share/photo&quot;, {url: data:post.featuredImage, caption: data:post.url})' rel='noreferrer noopener nofollow' target='_blank'>
+      <i data-i='tumblr'/>
+    </a>
+    <a class='btn nshare-tlg' expr:href='appendParams(&quot;https://t.me/share/url?&quot;, {url: data:post.url})' rel='noreferrer noopener nofollow' target='_blank'> 
+      <i data-i='telegram'/>
+    </a>
+    <a class='btn nshare-ws' expr:href='appendParams(&quot;https://api.whatsapp.com/send?&quot;, {text: data:post.title, url: data:post.url})' rel='noreferrer noopener nofollow' target='_blank'>
+      <i data-i='whatsapp'/>
+    </a>
+  </div>
+</b:includable> 

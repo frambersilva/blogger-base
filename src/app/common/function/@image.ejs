@@ -1,0 +1,23 @@
+<b:includable id='@image'>
+<b:if cond='data:src'>
+<b:with value='data:src.isYoutube ? data:src.youtubeMaxResDefaultUrl : data:src' var='source'>
+  <b:with value='(data:resize ? resizeImage(data:src, data:resize, data:ratio) : (data:source))' var='image'>
+    <b:tag expr:alt='data:alt ?: data:messages.image' name='img'>
+      <b:attr name='b:whitespace' value='remove'/>
+      <b:attr expr:value='data:id' name='id'/>
+      <b:class cond='data:class' expr:name='data:class'/>
+      <b:attr expr:value='data:width ?: data:image.width' name='width'/>
+      <b:attr expr:value='data:height ?: data:image.height' name='height'/>
+      <b:attr expr:value='data:sizes' name='sizes'/>
+      <b:attr expr:value='data:loading' name='loading'/>
+      <b:with value='&quot;blogger.googleusercontent.com/img/a/&quot;' var='serve'>
+        <b:attr expr:value='(data:srcset ? resizeImage(data:image, data:srcset.first, data:ratio) : data:image) + ((data:image contains data:serve) and data:params ? (&quot;-&quot; + data:params) : &quot;&quot;)' name='src'/>
+        <b:if cond='data:srcset'>
+          <b:attr expr:value='sourceSet(data:image, data:srcset, data:ratio)' name='srcset'/>
+        </b:if>
+      </b:with>
+    </b:tag>
+  </b:with>
+</b:with>
+</b:if>
+</b:includable>

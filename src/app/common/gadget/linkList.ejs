@@ -1,0 +1,26 @@
+<b:includable id='widget:LinkList'>
+<b:if cond='data:widget.sectionId == &quot;footer-social&quot;'>
+  <div class='links flex gap-lg'>
+    <b:loop values='data:links' var='link'>
+      <a class='social-link color-link:hover' expr:aria-label='data:link.name' expr:href='data:link.target' rel='noopener noreferrer nofollow' target='_blank'>
+        <i expr:data-i='data:link.name'/>
+      </a>
+    </b:loop>
+  </div>
+
+  <b:elseif cond='data:widget.sectionId == &quot;branding&quot;'/>
+   <div class='links flex gap-lg mt'>
+    <b:loop values='data:links' var='link'>
+      <a class='social-link color-link:hover' expr:aria-label='data:link.name' expr:href='data:link.target' rel='noopener noreferrer nofollow' target='_blank'>
+        <i class='i-sm' expr:data-i='data:link.name'/>
+      </a>
+    </b:loop>
+  </div>
+  <b:else/>
+  <div class='links gap-sm grid'>
+    <b:loop values='data:links' var='link'>
+      <a class='links-link' expr:href='data:link.target' title='links'><data:link.name/></a>
+    </b:loop>
+  </div>
+</b:if>
+</b:includable>

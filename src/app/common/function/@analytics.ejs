@@ -1,0 +1,11 @@
+<b:includable id='@analytics'>
+<b:if cond='data:blog.analyticsAccountNumber'>
+<script async='async' expr:src='params(&quot;https://www.googletagmanager.com/gtag/js&quot;,{id: data:blog.analyticsAccountNumber})'/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(&#39;js&#39;, new Date());
+    gtag(&#39;config&#39;,&#39;<data:blog.analyticsAccountNumber/>&#39;);
+</script>
+</b:if>
+</b:includable>

@@ -1,0 +1,53 @@
+<b:includable id='post:card'>
+<div expr:class='&quot;col-&quot; + data:skin.vars.columnHomepage'>
+<b:loop values='data:items ?: data:posts' var='post'>
+  <div expr:class='&quot;sh-ui card-&quot; + data:skin.vars.cards'>
+    <a class='card-image image' expr:href='data:post.url'>
+      <img class='img' expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+    </a>
+    <b:if cond='data:skin.vars.showCategory'>
+      <b:if cond='data:post.labels.notEmpty'>
+        <div class='tags'>
+          <b:loop values='data:post.labels limit 1' var='l'>
+            <a class='p-md bg-keycolor color-white' expr:href='data:l.url'><data:l.name/></a>
+          </b:loop>
+          </div>
+      </b:if>
+    </b:if>
+    
+    <div class='card-body'>
+      <b:if cond='data:skin.vars.showTitle'>
+        <h2 class='card-title mt'><a expr:href='data:post.url'> <data:post.title/></a></h2>
+      </b:if>
+      <div class='card-meta'>
+        <b:if cond='data:skin.vars.showSnippet'>
+          <p class='card-snippet mt'>
+            <b:eval expr='data:post.snippets.long snippet { length: 70, links: false, linebreaks: false }'/>
+          </p>
+        </b:if>
+        <div class='flex align-items-center gap-md mt'>
+      <b:if cond='data:skin.vars.showDate'>
+        <time class='flex align-items-center gap-sm'><i data-i='clock'/><data:post.date/></time>
+      </b:if>
+          <b:if cond='data:skin.vars.cardComment'>
+      <div class='comment flex align-items-center gap-sm'>
+            <i data-i='comment'/>
+            <data:post.numberOfComments/>
+      </div>
+          </b:if>
+  </div>
+      <b:if cond='data:skin.vars.editPost'>
+    <span expr:class='&apos;item-control &apos; + (data:post.adminClass ?: &apos;blog-admin&apos;)'>
+      <a class='meta-item flex items-center' expr:href='&apos;https://www.blogger.com/blog/post/edit/&apos; + data:blog.blogId + &apos;/&apos; + data:post.id' rel='nofollow noopener noreferrer'>
+      <i data-i='pencil'/>
+      <data:messages.edit/>
+      </a>
+    </span>
+  </b:if>
+      </div>
+    </div>
+  </div>
+<b:include name='post:inlineAd'/>
+</b:loop>
+</div>
+</b:includable>

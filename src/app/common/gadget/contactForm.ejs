@@ -1,0 +1,9 @@
+<!-- Contacto formulario -->  
+<b:includable id='widget:ContactForm'>
+  <form class='contact-form color-black-dark' expr:action='&quot;https://formspree.io/f/&quot; + data:skin.vars.formspree' method='POST'>
+    <input class='contact-input form-control block w-full p-xlg bg-white-dark rd-sm mb-lg sh-sm' expr:placeholder='data:contactFormNameMsg' name='name' required='required' type='text'/>
+    <input class='contact-input form-control block w-full p-xlg bg-white-dark rd-sm mb-lg sh-sm' expr:placeholder='data:contactFormEmailMsg' name='email' required='required' type='email'/>
+    <textarea class='contact-textarea form-control block w-full bg-white-dark rd-sm mb-lg sh-sm' expr:placeholder='data:contactFormMessageMsg' name='Message' required='required'/>
+    <button class='contact-button btn bg-keycolor' type='submit'><data:contactFormSendMsg/></button>
+</form>
+</b:includable>

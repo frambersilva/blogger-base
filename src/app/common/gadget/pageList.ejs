@@ -1,0 +1,20 @@
+<b:includable id='widget:PageList'>
+<b:if cond='data:widget.sectionId == &quot;menu&quot;'>
+  <nav class='wjs-menu' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/SiteNavigationElement'>
+    <b:include data='{ links: data:links }' name='@menu'/>
+  </nav>
+  <b:else/>
+  <div class='flx-lg'>
+    <b:loop values='data:links' var='link'>
+      <a class='pages-link' expr:href='data:link.href'>
+        <b:class cond='data:link.isCurrentPage' name='is-here'/>
+        <b:if cond='data:link.href contains &quot;?ref=&quot;'>
+          <b:attr name='target' value='_blank'/>
+          <b:attr name='rel' value='noopener noreferrer nofollow'/>
+        </b:if>
+        <data:link.title/>
+      </a>
+    </b:loop>
+  </div>
+</b:if>
+</b:includable>

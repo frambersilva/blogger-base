@@ -1,0 +1,279 @@
+/*!
+ * Typography @1.0.0
+ * License MIT
+ * Developer by Framber Silva
+*/
+.typography :where(p,blockquote,img,table,h1,h2,h3,h4,h5,h6,span,audio,video,pre,.btn,#tocAuto, ul, li){
+	margin-bottom:var(--md);
+}
+
+.typography img{
+	margin-top:1rem;
+}
+
+.typography ol{
+	counter-reset:my-awesome;
+}
+
+.typography p a{
+	color:var(--keycolor);
+}
+
+.typography ol li{
+	margin-bottom:1rem;
+}
+
+.typography ol li::before{
+	counter-increment:my-awesome;
+	content:counter(my-awesome);
+	text-align:center;
+	padding:2px 0px 2px;
+	min-width:30px;
+	background-color:var(--keycolor);
+	color:var(--bg-white);
+	border-radius:8px;
+	display:inline-block;
+	margin-right:5px;
+}
+
+.typography h2{
+	font-size:1.65rem;
+	font-weight:700;
+}
+
+.typography h3{
+	font-size:1.55rem;
+	font-weight:700;
+}
+
+.typography p{
+	font-size:1rem;
+}
+
+.typography p{
+	display:block
+}
+
+.typography blockquote{
+	border-left:3px solid var(--keycolor);
+	padding-top:1rem;
+	padding-bottom:1rem;
+	padding-left:1rem;
+	background:var(--dk-light)
+}
+
+.typography ul li{
+	list-style: initial;
+	margin-left: 1.25rem
+}
+
+.typography pre{
+	background-color:var(--bg-dark);
+	color:var(--bg-white);
+	border-radius:var(--sm);
+	padding:var(--md)
+}
+
+.shortcode__list{
+
+}
+
+pre {
+  --copy-text: "Copy";
+  --copied-text: "Copied!";
+  --code-bg: #2a2833;
+  --code-color: #9a92be;
+  --code-color-comment: #787878;
+  --code-color-string: #ffcd81;
+  --code-color-selector: #a38eff;
+  --code-color-property: #a38eff;
+  --code-color-tag: #6a6684;
+  --code-color-tag-name: #eeebfe;
+  --code-color-attr: #c3b6ff;
+  --code-color-class: #eeebff;
+  --code-color-number: #ffcd95;
+  position: relative;
+  font-family: SFMono-Regular, monospace;
+}
+
+pre > code {
+  background-color: var(--code-bg);
+  color: var(--code-color);
+  display: block;
+  overflow-x: auto;
+  white-space: pre;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.hljs-copy {
+  position: absolute;
+  border: 0 none;
+  inset: 0.5rem 0.5rem auto auto;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: 0.3s background-color;
+  font-size: 14px;
+}
+
+.hljs-copy:hover { background-color: rgba(0, 0, 0, 0.75) }
+.hljs-copy::before { content: var(--copy-text) }
+.hljs-copy.is-copied::before { content: var(--copied-text) }
+
+.hljs-name,
+.hljs-section { color: var(--code-color-tag-name) }
+.hljs-tag { color: var(--code-color-tag) }
+.hljs-selector-class { color: var(--code-color-class) }
+.hljs-number { color: var(--code-color-number) }
+
+.hljs-comment,
+.hljs-meta { color: var(--code-color-comment) }
+
+.hljs-emphasis,
+.hljs-quote,
+.hljs-string,
+.hljs-strong,
+.hljs-template-variable,
+.hljs-variable { color: var(--code-color-string) }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type { color: var(--code-color-selector) }
+
+.hljs-attribute,
+.hljs-bullet,
+.hljs-literal,
+.hljs-symbol { color: var(--code-color-property) }
+
+.hljs-attr,
+.hljs-selector-attr,
+.hljs-selector-id,
+.hljs-selector-pseudo,
+.hljs-title { color: var(--code-color-attr) }
+
+
+/*! Table*/
+.typography table{
+	border-collapse:collapse;
+	max-width:100%;
+    width:100%;
+}
+
+.typography table tbody td,table thead th{
+	padding:.75rem 1.2rem;
+	border:1px solid #e3e3e3;
+	font-weight:500;
+	text-align:left
+}
+
+.typography thead th{
+	white-space:nowrap
+}
+
+.typography tbody tr:nth-child(odd){
+	background-color:var(--dk-light)
+}
+
+/*! Toc*/
+#tocAuto{
+	background-color:var(--dk-light);
+	color:var(--dk-dark);
+	border-top:4px solid var(--bg-header);
+	padding:1rem
+}
+
+#tocAuto ol{list-style:none;padding-top:0;padding-bottom:0;padding-left:1rem}#tocAuto ol li a{text-decoration:none}.author-buy img{height:64px;width:64px;border-radius:50%;object-fit:cover}.author-box{padding:3%;padding-bottom:30px;margin-top:30px;font-size:.9em;background-color:var(--dk-white);display:flex;align-items:center;border-radius:5px;box-shadow:rgba(23,43,99,.14) 0 7px 28px !important}.author-box .avatar{width:120px;height:120px;border-radius:100%;margin-right:30px;object-fit:cover}h5.author-title{margin-bottom:.5em;font-weight:600;font-size:1.35rem}.author-description{line-height:1.6em;font-size:1rem;margin-bottom:.5em}.author-links a{margin-top:-0.5em;font-size:1em;line-height:2em;float:left}@media(max-width: 768px){.author-box{padding:20px;padding-bottom:20px;margin-top:100px;flex-direction:column;text-align:center}.author-box .avatar{margin-right:0;margin-bottom:10px;width:100px;height:100px;margin-top:-35px}.author-box .avatar img{max-width:100px;height:100px}.author-links a{float:none;align-self:center}.author-description{margin-bottom:.5em}}.autor-min{width:46px;height:46px}.fs-small{font-size:.95rem}
+
+.nshare{
+	--nshare-facebook:#1778f2;
+	--nshare-twitter:#55acee;
+	--nshare-pinterest:#f0002a;
+	--nshare-tumblr:#35465c;
+	--nshare-reddit:#ff4500;
+	--nshare-vk:#4376a6;
+	--nshare-whatsapp:#4fce5d;
+	--nshare-telegram:#08c;
+	--nshare-email:#464eb8
+}
+
+.nshare-fb{background-color:var(--nshare-facebook)}.nshare-tt{background-color:var(--nshare-twitter)}.nshare-pt{background-color:var(--nshare-pinterest)}.nshare-tb{background-color:var(--nshare-tumblr)}.nshare-rd{background-color:var(--nshare-reddit)}.nshare-vk{background-color:var(--nshare-vk)}.nshare-ws{background-color:var(--nshare-whatsapp)}.nshare-tlg{background-color:var(--nshare-telegram)}.nshare-msj{background-color:var(--nshare-email)}
+
+.post-comment{
+	margin-top:2rem
+}
+
+.comments>*+*{
+	margin-top:1rem
+}
+
+.comments-content>*+*{
+	margin-top:1rem
+}
+
+.comments-title{
+	margin-top:2rem;
+	font-size:1.7rem;
+	font-weight:600
+}
+
+.comments-replies{
+	margin-top:1rem;
+	padding-left:1.5rem;
+	border-left:2px solid var(--color-border)
+}
+
+.comments-replies>*+*{
+	margin-top:2rem
+}
+
+.comment-header{
+   display:flex;
+   gap:1rem;
+   align-items:center;
+   margin-bottom:1rem
+}
+
+.comment-iframe{
+  padding:1rem;
+  background-color:var(--dk-light)
+}
+
+.comment-iframe iframe{
+  width:100%;
+  background-color:var(--dk-light)
+}
+
+.comment-author{
+  display:flex;
+  align-items:center;
+  gap:.5rem
+}
+
+.comment-badge{
+  --i-size:18px
+}
+
+.comment-time{
+  display:block
+}
+
+.comment-footer{
+  margin-top:1rem
+}
+
+.comment-restore-button{
+  padding:1rem;
+  width:100%
+}
+
+.comment-restore-button:not(.is-replying){
+   display:none
+}
+
+.comment-reply-button{
+  padding:.25rem .75rem;
+  margin-right:.5rem
+}

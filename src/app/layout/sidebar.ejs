@@ -1,0 +1,52 @@
+
+  <b:if cond='data:show.home or data:show.post or data:show.page'>
+    <b:tag itemscope='itemscope' itemtype='https://schema.org/WPSideBar' name='aside'>
+    <b:if cond='data:show.home or data:show.post or data:show.page or data:view.isLabelSearch'>   <b:class name='sidebar flex flex-column'/>
+    </b:if>                    
+    <b:section class='sticky-sidebar' id='sidebar'>
+      <b:widget id='PopularPosts1' title='Entradas' type='PopularPosts' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='numItemsToShow'>4</b:widget-setting>
+        </b:widget-settings>
+      </b:widget>
+
+      <b:widget cond='data:view.isPost' id='Blog3' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+         <b:includable id='main'>
+           <b:with value='data:posts.first' var='post'>
+
+             <b:with value='{ buy: (data:post.labels first (l =&gt; l.name == &quot;play&quot;) ), price: (data:post.labels where (l =&gt; l.name contains &quot;$&quot;)), licenses: (data:post.enclosures where (e =&gt; e.mimeType in [&quot;play&quot;])) }' var='checkout'>
+             <b:with value='{ buy: (data:checkout.licenses where (e =&gt; e.mimeType in [&quot;play&quot;])) }' var='licenses'> 
+    
+            <b:if cond='data:checkout.price.any'>
+                   <div class='dk:bg-white p-md sticky rd-sm sh-ui'>
+
+<!-- Precio -->
+<b:if cond='data:checkout.price[0]'>
+<div class='checkout-section flex justify-between align-items-center mb shop-title'>
+<h3 class='fs-3'>Precio</h3>
+<div class='checkout-price fs-3 fw-500' id='amount'>
+<b:eval expr='data:checkout.mit ? &quot;MIT&quot; : data:checkout.price[0].name'/>
+</div>
+</div>
+</b:if> 
+<!-- Metodo de pago -->
+<div class='checkout-section mb' id='checkout-payment'>
+  <div class='fs-md mb'>Método de pago</div>      
+    <div class='secction'>
+      <b:loop values='data:checkout.licenses limit 1' var='license'>
+        <b:with value='data:license.mimeType in [&quot;mit&quot;,&quot;gpl&quot;] ? &quot;free&quot; : data:license.mimeType' var='comprar'>
+          <a class='btn bg-keycolor w-full color-white' expr:href='data:license.url'>Comprar Ahora<i data-i='paypal'/></a>
+        </b:with>
+      </b:loop>
+    </div>                  
+</div>
+</div>
+</b:if>
+</b:with>
+</b:with>
+</b:with>    
+</b:includable>
+</b:widget>
+</b:section>
+</b:tag> 
+</b:if>

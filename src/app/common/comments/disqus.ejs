@@ -1,0 +1,15 @@
+<b:includable id='comment:disqus'>
+<div id='disqus_thread'/>
+<script>
+var disqus_shortname = &quot;<data:skin.vars.config_shortname/>&quot;,
+disqus_config = function(){
+this.page.url = &quot;<data:view.url.canonical/>&quot;;
+this.page.title = &quot;<data:view.title.escaped/>&quot;;
+};//<![CDATA[
+(function() {
+  var d = document, s = d.createElement('script');
+  s.async = true;s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);
+})();//]]>
+</script>
+</b:includable>

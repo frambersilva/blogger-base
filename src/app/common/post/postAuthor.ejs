@@ -1,0 +1,19 @@
+<b:includable id='autorBox'>
+<!--author-box-->
+<div class='author-box'>
+  <div class='image'>
+    <img class='avatar ' expr:src='data:post.author.authorPhoto.image' loading='lazy'/>
+  </div>
+  <div class='author-info'>
+    <h5 class='author-title' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+      <span itemprop='name'><data:post.author.name/></span>
+    </h5>
+    <div class='author-summary'>
+      <p class='author-description'><data:post.author.aboutMe/></p>
+    </div>
+    <div class='author-links'>
+      <a class='color-keycolor' expr:href='data:post.author.profileUrl' title='Read more'>Visitar mi perfil</a> 
+    </div>
+  </div>
+</div>
+</b:includable>
